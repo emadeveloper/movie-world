@@ -12,20 +12,19 @@ const Main = () => {
       setMovies(response.data.results);
     });
   }, []);
-  
+
   const truncateString = (str, num) => {
-    if(str?.length > num) {
-      return str.slice(0, num) + '...'
+    if (str?.length > num) {
+      return str.slice(0, num) + "...";
+    } else {
+      return str;
     }
-    else {
-      return str
-    }
-  }
+  };
 
   return (
-    <div className="w-full h=[550px] text-white">
+    <div className="w-full h-[550px] text-white">
+      <div className="absolute w-full h-[550px] bg-gradient-to-r from-black over" />
       <div className="w-full h-full">
-        <div className="absolute w-full h-[550px] bg-gradient-to-r from-black"></div>
         <img
           className="w-full h-full object-cover"
           src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}
@@ -42,8 +41,12 @@ const Main = () => {
               Watch Later
             </button>
           </div>
-          <p className="text-gray-400 text-sm">Released: {movie?.release_date}</p>
-          <p className="w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[35%] text-gray-200">{truncateString(movie?.overview, 150)}</p>
+          <p className="text-gray-400 text-sm">
+            Released: {movie?.release_date}
+          </p>
+          <p className="w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[35%] text-gray-200">
+            {truncateString(movie?.overview, 150)}
+          </p>
         </div>
       </div>
     </div>
