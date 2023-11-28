@@ -8,12 +8,11 @@ const Main = () => {
   const movie = movies[Math.floor(Math.random() * movies.length)];
 
   useEffect(() => {
-    axios.get(requests.requestTopRated).then((response) => {
+    axios.get(requests.requestPopular).then((response) => {
       setMovies(response.data.results);
     });
   }, []);
-  /* console.log(movie); */
-
+  
   const truncateString = (str, num) => {
     if(str?.length > num) {
       return str.slice(0, num) + '...'
